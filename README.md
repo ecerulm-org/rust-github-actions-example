@@ -21,4 +21,4 @@ I'm trying to **avoid**  having a CI/CD step that
 
 * Managing a merge queue [^mergequeue]
 
-[^mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue 
+[mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue 
