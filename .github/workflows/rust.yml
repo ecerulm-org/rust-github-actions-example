@@ -1,5 +1,5 @@
 name: Build rust
-
+run-name: Build and test by @${{ github.actor }}
 on:
   push:
     branches: ["main"]
