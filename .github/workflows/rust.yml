@@ -26,6 +26,7 @@ jobs:
     needs:
       - build
     steps:
+      - uses: actions/checkout@v4
       - name: cargo test
         id: cargo-test-step
         run: cargo test
