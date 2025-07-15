@@ -5,5 +5,5 @@ fn main() {
 #[test]
 fn test1() {
     let result = 2 + 2;
-    assert_eq!(result, 5);
+    assert_eq!(result, 4);
 }
