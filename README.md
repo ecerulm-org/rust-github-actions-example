@@ -31,11 +31,8 @@ This script will
   * the latest version in `origin/main` is retrieved via `$(git show origin/main:VERSION.txt)`
 
 # TODO 
-* right now the pre-commit bumps the version form main without verifying if that is lower that the current version in this branch
-* write the same semver check but as github action workflow step
-* Require the check to pass in th
-* Setup GitHub artifacts so that the test job uses the executable for the build job
 
+* Setup GitHub artifacts so that the test job uses the executable for the build job
 
 # GitHub settings for this repo 
 
