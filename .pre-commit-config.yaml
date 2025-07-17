@@ -1,7 +1,7 @@
--   repo: local
-    hooks:
-    -   id: changelogs-rst
-        name: changelogs must be rst
-        entry: changelog filenames must end in .rst
-        language: fail
-        files: 'changelog/.*(?<!\.rst)$'
+repos:
+- repo: local
+  hooks:
+    - id: check-version-bump
+      name: Version must be bumped on every PR
+      language: script
+      entry: check_version_bump.sh
