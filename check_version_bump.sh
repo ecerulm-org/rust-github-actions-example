@@ -11,7 +11,7 @@ fi
 
 set -e
 STAGINGAREA_VERSION="$(git show :VERSION.txt)"
-COMPARISON=$(pysemver compare "${STAGINGAREA_VERSION}" "${MAIN_VERSION}") 
+COMPARISON=$(pysemver compare "${STAGINGAREA_VERSION}" "${MAIN_VERSION}")
 
 if [ "${COMPARISON}" = "1" ]; then
   # no need to bump the version, the staging area version is already higher than the one in origin/main
