@@ -16,9 +16,12 @@ COMPARISON=$(pysemver compare "${STAGINGAREA_VERSION}" "${MAIN_VERSION}")
 if [ "${COMPARISON}" = "1" ]; then
   # no need to bump the version, the staging area version is already higher than the one in origin/main
   # 1 if the first version is greater than the second version.
+  echo "Version ${STAGINGAREA_VERSION} is already higher than the version in origin/main ${MAIN_VERSION}"
   exit 0
 fi
 pysemver bump patch "${MAIN_VERSION}" >VERSION.txt
+echo "Current VERSION.txt is ${STAGINGAREA_VERSION}"
+echo "The PR can't be merged if the VERSION.txt (${STAGINGAREA_VERSION}) is not bumped to be higher that ${MAIN_VERSION}"
 exit 1
 
 
