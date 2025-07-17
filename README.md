@@ -17,6 +17,19 @@ I'm trying to **avoid**  having a CI/CD step that
 * creates a new commit
 * Pushes the commit (with `-o ci.skip`)
 
+# pre-commit hookd
+
+Run `pre-commit install`  to install the hooks. 
+
+The [.pre-commit-config.yaml/(.pre-commit-config.yaml) 
+calls the [`check_bump_version.sh`](check_bump_version.sh).
+
+This script will 
+* `git fetch` to update the `origin/main` ref
+* Use the `pysemver` to bump the patch version of whatever version is in `origin/main`
+  * the version is stored in file [VERSION.txt](VERSION.txt)
+  * the latest version in `origin/main` is retrieved via `$(git show origin/main:VERSION.txt)`
+
 
 # TODO 
 * write pre-commit script that checks that the version has been bumped from the origin/main
