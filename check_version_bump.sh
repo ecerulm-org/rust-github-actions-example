@@ -1,6 +1,7 @@
 #!/bin/bash
 set -uo pipefail
 
+git fetch || exit 1
 VERSION=$(git show origin/main:VERSION.txt)
 retVal=$?
 if [ $retVal -ne 0 ]; then
