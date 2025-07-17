@@ -31,7 +31,7 @@ jobs:
       - name: Run tests
         id: cargo-test-step
         run: cargo test
-  check-bump-vesion:
+  check-version-bumped:
     name: "Check version bumped"
     runs-on: ubuntu-latest
     steps:

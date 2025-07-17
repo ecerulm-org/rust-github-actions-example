@@ -17,7 +17,7 @@ I'm trying to **avoid**  having a CI/CD step that
 * creates a new commit
 * Pushes the commit (with `-o ci.skip`)
 
-# pre-commit hookd
+# pre-commit hook
 
 Run `pre-commit install`  to install the hooks. 
 
@@ -55,6 +55,8 @@ This script will
   * Require signed commits
   * Require a pull request before merge
   * Require status checks to pass
+    * "Check version bumped" (which is the jobname for job id `check-version-bumped`)
+    * "cargo test" (which is the jobname for job id `test`)
   * Block force pushes
   
 
