@@ -31,3 +31,19 @@ jobs:
       - name: Run tests
         id: cargo-test-step
         run: cargo test
+  check-bump-vesion:
+    name: "Check version bumped"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip' # caching pip dependencies
+      - name: Install pipx
+        run: pipx install semver
+
+      - name: Run check_bump_version.sh
+        run: |
+          pipx ensurepath
+          ./check_bump_version.sh

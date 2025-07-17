@@ -19,6 +19,6 @@ if [ "${COMPARISON}" = "1" ]; then
   exit 0
 fi
 pysemver bump patch "${MAIN_VERSION}" >VERSION.txt
-exit 0
+exit 1
 
 
