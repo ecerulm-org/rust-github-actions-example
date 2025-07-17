@@ -30,14 +30,13 @@ This script will
   * the version is stored in file [VERSION.txt](VERSION.txt)
   * the latest version in `origin/main` is retrieved via `$(git show origin/main:VERSION.txt)`
 
-
 # TODO 
-* write pre-commit script that checks that the version has been bumped from the origin/main
-  * git fetch
-  * get version from VERSION file
-  * server compare between $(git show HEAD:VERSION) and $(git show origin/main:VERSION)
+* right now the pre-commit bumps the version form main without verifying if that is lower that the current version in this branch
 * write the same semver check but as github action workflow step
 * Require the check to pass in th
+* Setup GitHub artifacts so that the test job uses the executable for the build job
+
+
 # GitHub settings for this repo 
 
 * In [Settings > General](https://github.com/ecerulm-org/rust-github-actions-example/settings)
