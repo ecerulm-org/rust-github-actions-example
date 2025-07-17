@@ -42,7 +42,7 @@ jobs:
       - name: Install pipx
         run: pipx install semver
 
-      - name: Run check_bump_version.sh
+      - name: Run check_version_bump.sh
         run: |
           pipx ensurepath
-          ./check_bump_version.sh
+          ./check_version_bump.sh
