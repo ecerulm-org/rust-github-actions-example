@@ -39,8 +39,6 @@ jobs:
           python-version: '3.13'
       - name: Install pipx
         run: pipx install semver
-
       - name: Run check_version_bump.sh
         run: |
-          pipx ensurepath
           ./check_version_bump.sh
