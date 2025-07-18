@@ -21,8 +21,8 @@ I'm trying to **avoid**  having a CI/CD step that
 
 Run `pre-commit install`  to install the hooks. 
 
-The [.pre-commit-config.yaml/(.pre-commit-config.yaml) 
-calls the [`check_bump_version.sh`](check_bump_version.sh).
+The [.pre-commit-config.yaml](.pre-commit-config.yaml) 
+calls the [`check_version_bump.sh`](check_version_bump.sh).
 
 This script will 
 * `git fetch` to update the `origin/main` ref
@@ -55,17 +55,18 @@ This script will
   * Require signed commits
   * Require a pull request before merge
   * Require status checks to pass
-    * "Check version bumped" (which is the jobname for job id `check-version-bumped`)
-    * "cargo test" (which is the jobname for job id `test`)
+    * "Check version bumped" (which is the [jobname for job id `check-version-bumped`](https://github.com/ecerulm-org/rust-github-actions-example/blob/d2585216a3fb2e537c750f4ca5fcd369ccb0077a/.github/workflows/rust.yml#L33))
+    * "cargo test" (which is the [jobname for job id `test`](https://github.com/ecerulm-org/rust-github-actions-example/blob/d2585216a3fb2e537c750f4ca5fcd369ccb0077a/.github/workflows/rust.yml#L23)) 
   * Block force pushes
   
 
 # References
 
-* Managing a merge queue [^mergequeue]
+* [Managing a merge queue][mergequeue]
 * [GitHub Actions Marketplace]
-* [merge_group] event
+* [merge_group event][merge_group]
 
-[^mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue 
-[GitHub Actions Marketplace]: https://github.com/marketplace?verification=verified_creator&type=actions
+
+[GitHub Actions Marketplace]:  https://github.com/marketplace?verification=verified_creator&type=actions
 [merge_group]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
+[mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue
