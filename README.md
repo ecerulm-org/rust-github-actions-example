@@ -55,8 +55,8 @@ This script will
   * Require signed commits
   * Require a pull request before merge
   * Require status checks to pass
-    * "Check version bumped" (which is the jobname for job id `check-version-bumped`)
-    * "cargo test" (which is the jobname for job id `test`)
+    * "Check version bumped" (which is the [jobname for job id `check-version-bumped`](https://github.com/ecerulm-org/rust-github-actions-example/blob/d2585216a3fb2e537c750f4ca5fcd369ccb0077a/.github/workflows/rust.yml#L33))
+    * "cargo test" (which is the [jobname for job id `test`](https://github.com/ecerulm-org/rust-github-actions-example/blob/d2585216a3fb2e537c750f4ca5fcd369ccb0077a/.github/workflows/rust.yml#L23)) 
   * Block force pushes
   
 
