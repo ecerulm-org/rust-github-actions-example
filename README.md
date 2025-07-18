@@ -21,7 +21,7 @@ I'm trying to **avoid**  having a CI/CD step that
 
 Run `pre-commit install`  to install the hooks. 
 
-The [.pre-commit-config.yaml/](.pre-commit-config.yaml) 
+The [.pre-commit-config.yaml](.pre-commit-config.yaml) 
 calls the [`check_bump_version.sh`](check_bump_version.sh).
 
 This script will 
@@ -63,8 +63,8 @@ This script will
 # References
 
 * Managing a merge queue [^mergequeue]
-* [GitHub Actions Marketplace]
-* [merge_group] event
+* [GitHub Actions Marketplace][GitHub Actions Marketplace]
+* [merge_group event][merge_group]
 
 [^mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue 
 [GitHub Actions Marketplace]: https://github.com/marketplace?verification=verified_creator&type=actions
