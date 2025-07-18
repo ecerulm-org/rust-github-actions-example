@@ -63,9 +63,9 @@ This script will
 # References
 
 * Managing a merge queue [^mergequeue]
-* [GitHub Actions Marketplace][GitHub Actions Marketplace]
+* [GitHub Actions Marketplace][ghactionsmkt]
 * [merge_group event][merge_group]
 
 [^mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue 
-[GitHub Actions Marketplace]: https://github.com/marketplace?verification=verified_creator&type=actions
+[ghactionsmkt]: https://github.com/marketplace?verification=verified_creator&type=actions
 [merge_group]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
