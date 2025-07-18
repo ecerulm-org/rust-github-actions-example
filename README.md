@@ -22,7 +22,7 @@ I'm trying to **avoid**  having a CI/CD step that
 Run `pre-commit install`  to install the hooks. 
 
 The [.pre-commit-config.yaml](.pre-commit-config.yaml) 
-calls the [`check_bump_version.sh`](check_bump_version.sh).
+calls the [`check_version_bump.sh`](check_version_bump.sh).
 
 This script will 
 * `git fetch` to update the `origin/main` ref
