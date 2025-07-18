@@ -20,6 +20,7 @@ if [ "${COMPARISON}" = "1" ]; then
   exit 0
 fi
 pysemver bump patch "${MAIN_VERSION}" >VERSION.txt
+cargo release version --execute --no-confirm $(cat VERSION.txt)
 echo "Current VERSION.txt is ${STAGINGAREA_VERSION}"
 echo "The PR can't be merged if the VERSION.txt (${STAGINGAREA_VERSION}) is not bumped to be higher that origin/main version ${MAIN_VERSION}"
 exit 1
