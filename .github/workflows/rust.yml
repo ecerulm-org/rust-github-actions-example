@@ -34,6 +34,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Cache .cargo
+        id: cache-cargo
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-cargo
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.cache-cargo.outputs.cache-hit == 'true' }}
+        name: List cargo installed commands found in ~/.cache
+        continue-on-error: true
+        run: cargo --list
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -41,6 +60,7 @@ jobs:
         run: pipx install semver
       - name: Install cargo-release
         run: cargo install cargo-release
+        cache:
       - name: Run check_version_bump.sh
         run: |
           ./check_version_bump.sh
