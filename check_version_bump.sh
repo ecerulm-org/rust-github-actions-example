@@ -1,9 +1,11 @@
 #!/bin/bash
 set -uo pipefail
 
+
 update_cargo_toml_and_lock() {
   # Ensure the version in Cargo.toml and Cargo.lock always matches VERSION.txt
-  cargo release version --execute --no-confirm $(cat VERSION.txt)
+  # cargo release version --execute --no-confirm $(cat VERSION.txt)
+  cargo set-version $(cat VERSION.txt)
 }
 
 # Get latest version on origin/main

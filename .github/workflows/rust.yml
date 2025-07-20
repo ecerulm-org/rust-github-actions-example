@@ -59,8 +59,8 @@ jobs:
       - name: Install pipx
         run: pipx install semver
 
-      - name: Install cargo-release
-        run: cargo install cargo-release
+      - name: Install cargo set-version
+        run: cargo install cargo-edit
 
       - name: Run check_version_bump.sh
         run: |
