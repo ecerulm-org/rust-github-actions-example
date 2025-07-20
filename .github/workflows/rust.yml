@@ -55,7 +55,7 @@ jobs:
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v6
         with:
-          enable-caching: true
+          enable-cache: true
 
       - name: Get diretories
         run: |
