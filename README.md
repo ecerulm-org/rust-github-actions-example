@@ -66,9 +66,11 @@ This script will
 * [GitHub Actions Marketplace]
 * [merge_group event][merge_group]
 * [cargo release version][cargo-release]
+* [cargo set-version][cargo-edit]
 
 
 [GitHub Actions Marketplace]:  https://github.com/marketplace?verification=verified_creator&type=actions
 [merge_group]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
 [mergequeue]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue
 [cargo-release]: https://github.com/crate-ci/cargo-release
+[cargo-edit]: https://github.com/killercup/cargo-edit/blob/master/README.md#available-subcommands
