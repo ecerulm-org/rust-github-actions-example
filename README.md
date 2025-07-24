@@ -1,21 +1,64 @@
 # Purpose 
 
-This is just a test to setup a CI/CD with GitHub Actions that will 
-deploy each commit to `main` branch to DockerHub. 
+This is just a test to demonstrate Continuous Deployment setup. 
 
-The idea is to set protected branch 
-* Use GitHub merge queue in `main` branch
-* Require merge method: squash
-* Only merge non-failing pull requests
-* Set merge limits
+It will deploy each commit in `main` branch to DockerHub. 
 
-The PRs must bump the version in the PR itself.
+Every commit in main is deployable, which implies that each commmit
+in `main branch` has a different version number (stored in [VERSION.txt](VERSION.txt).
 
-I'm trying to **avoid**  having a CI/CD step that 
+The developer is responsible for bumping the version number on each PR. 
 
-* bumps the version
-* creates a new commit
-* Pushes the commit (with `-o ci.skip`)
+In order to ensure that each commit has different [`VERSION.txt`](VERSION.txt)
+the following has been setup.
+
+* a `pre-commit` configuration file [`.pre-commit-config.yaml`](.precommit-config.yaml) which ensures that the PR has bumped the
+  version number locally with respect to the version currently in `origin/main`.
+  This is implemented by [check_version_bump.sh](check_version_bump.sh)
+* a GitHub Actions workflow for the PR that ensures that the PR bumps 
+  the version with respect to `origin/main`.
+  The GitHub status checks will fail if the version is not bumped. 
+  The workflow won't update the version number itself. 
+  It is still the responsability of the developer to "fix the PR" by 
+  bumping the version.
+* a branch protection rule in GitHub for `main` to "Require branches to be up to date before merging"
+  * Although the merge queue provides the same benefits as this. 
+  * I guess it's better to get feedback that the PR needs to bump the version earlier, before trying to merge
+* a GitHub merge queue
+  * it serializes the merges
+  * it runs the `merge_group` trigger before actually merging,
+  * that way we can actually ensure that each commit in `main` has a bumped version
+  * the pre-commmit and PR workflow part were only early warning systems
+  
+
+
+
+
+
+
+# Advantages and drawbacks
+
+* This way ensures each commit in `main` has a stricly increasing [`VERSION.txt`](VERSION.txt)
+  * Having the version number in the source code can be useful.
+* It has the disadvantage of forcing the developer to explicitly update the [`VERSION.txt`](VERSION.txt) 
+  * Every PR has to update this file so it becomes a nuisance for the developer
+
+
+
+# Alternatives
+
+* Give up on the notion of having the version number on the source code.
+  * Have the deployment pipline compute the version.
+  * Build script can use the version, never commiting to git
+* Have the CI/CD bump the version and create a new commit.
+  * I guess in this case it will be wise to have a `develop` and a `main` branch.
+  * `develop` is where PR will merge (after the CI/CD passes)
+  * there won't be versions in the `develop` branch
+  * For each commit in `develop` another CI/CD workflow will run that 
+    * bumps the version and creates a commit in `main`
+    * The commits in `main` are the one that get deployed
+
+
 
 # pre-commit hook
 
@@ -55,6 +98,7 @@ This script will
   * Require signed commits
   * Require a pull request before merge
   * Require status checks to pass
+    * Require branches to be up to date before merging
     * "Check version bumped" (which is the [jobname for job id `check-version-bumped`](https://github.com/ecerulm-org/rust-github-actions-example/blob/d2585216a3fb2e537c750f4ca5fcd369ccb0077a/.github/workflows/rust.yml#L33))
     * "cargo test" (which is the [jobname for job id `test`](https://github.com/ecerulm-org/rust-github-actions-example/blob/d2585216a3fb2e537c750f4ca5fcd369ccb0077a/.github/workflows/rust.yml#L23)) 
   * Block force pushes
